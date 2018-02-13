@@ -1,5 +1,5 @@
 $(function () {
-    //showModal('to tylko test');
+    // showModal('to tylko test');
 });
 
 function showModal(msg) {
