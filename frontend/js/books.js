@@ -4,6 +4,7 @@ $(function () {
     var formBookEdit = $('#bookEdit');
     var bookList = $('#booksList');
     var bookEditSelect = $('#bookEditSelect');
+    var bookEditAuthorSelect = formBookEdit.find('#author_id_edit');
 
     $.get('../rest/rest.php/book/')
         .done(function (data) {
@@ -11,6 +12,22 @@ $(function () {
             if (data && data.length > 0) {
                 data.forEach(function (e) {
                     createNewBook(e);
+                });
+            }
+        });
+
+    $.get('../rest/rest.php/author')
+        .done(function( data ) {
+            var data = data.success;
+            if (data && data.length > 0) {
+                var authorSelect = formBookAdd.find('#author_id');
+                data.forEach(function(a) {
+                    var authorOption1 = $('<option>');
+                    authorOption1.val(a.id);
+                    authorOption1.text(a.name + ' ' + a.surname);
+                    authorOption2 = authorOption1.clone();
+                    authorOption1.appendTo(authorSelect);
+                    authorOption2.appendTo(bookEditAuthorSelect);
                 });
             }
         });
@@ -75,6 +92,7 @@ $(function () {
                         formBookEdit.find('#id').val(data[0].id);
                         formBookEdit.find('#title').val(data[0].title);
                         formBookEdit.find('#description').val(data[0].description);
+                        bookEditAuthorSelect.val(data[0].author.id);
                     }
                 });
         } else {
@@ -95,9 +113,9 @@ $(function () {
             var data = data.success;
             if (data && data.length > 0) {
                 formBookEdit.css('display', 'none');
-                bookList.find('button[data-id=' + id + '].btn-book-remove').prev().text(data[0].title);
+                bookList.find('button[data-id=' + id + '].btn-book-remove').prev().html(data[0].title + ' <br>(' + data[0].author.name + ' ' + data[0].author.surname + ')');
                 bookEditSelect.val('');
-                bookEditSelect.find('option[value=' + id + ']').text(data[0].title);
+                bookEditSelect.find('option[value=' + id + ']').text(data[0].title + ' (' + data[0].author.name + ' ' + data[0].author.surname + ')');
                 showModal('Book updated!');
             }
         }).fail(function () {
@@ -119,11 +137,11 @@ let createNewBook = (book) => {
     let $bookDescription = $('<div>', {class: 'panel-body book-description'});
     let $bookEditOption = $('<option>', {value: book.id});
 
-    $bookTitle.text(book.title);
+    $bookTitle.html(book.title + ' <br>(' + book.author.name + ' ' + book.author.surname + ')');
     $bookDescription.text(book.description);
     $buttonRemove.attr('data-id', book.id);
     $buttonShowDescription.attr('data-id', book.id);
-    $bookEditOption.text(book.title);
+    $bookEditOption.text(book.title + ' (' + book.author.name + ' ' + book.author.surname + ')');
 
     $heading.append($bookTitle).append($buttonRemove).append($buttonShowDescription);
     $panel.append($heading).append($bookDescription);

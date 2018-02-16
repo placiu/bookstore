@@ -90,6 +90,27 @@ $(function () {
         });
     });
 
+    authorsList.on('click', 'button.btn-author-books', function () {
+        var authorBooksList = $(this).parent().next();
+        var id = $(this).data('id');
+        $.get('../rest/rest.php/author/' + id)
+            .done(function(data) {
+                var data = data.success;
+                if (data && data.length > 0) {
+                    authorBooksList.toggle();
+                    if (data[0].books && data[0].books.length > 0) {
+                        data[0].books.forEach(function(b) {
+                            var li = $('<li>');
+                            li.text(b.title);
+                            authorBooksList.append(li);
+                        });
+                    } else {
+                        authorBooksList.text('No books from this author!');
+                    }
+                }
+            });
+    });
+
 });
 
 let createNewAuthor = (author) => {
@@ -103,13 +124,16 @@ let createNewAuthor = (author) => {
     let $panel = $('<div>', {class: 'panel panel-default'});
     let $heading = $('<div>', {class: 'panel-heading'});
     let $authorTitle = $('<span>', {class: 'authorTitle'});
+    let $buttonBooks = $('<button class="btn btn-primary pull-right btn-xs btn-author-books"><i class="fa fa-book"></i></button>');
     let $buttonRemove = $('<button class="btn btn-danger pull-right btn-xs btn-author-remove"><i class="fa fa-trash"></i></button>');
+    let $authorBooksList = $('<ul>', {class: 'authorBooksList'});
 
     $authorTitle.text(author.name + ' ' + author.surname);
+    $buttonBooks.attr('data-id', author.id);
     $buttonRemove.attr('data-id', author.id);
 
-    $heading.append($authorTitle).append($buttonRemove);
-    $panel.append($heading);
+    $heading.append($authorTitle).append($buttonRemove).append($buttonBooks);
+    $panel.append($heading).append($authorBooksList);
     $li.append($panel);
     $authorList.append($li);
 }
