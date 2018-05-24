@@ -13,5 +13,5 @@ Aplikacja implementuje następujące funkcjonalności:
 <ul>
   <li>Implementacja wyświetlania, dodawania, edycji i usuwania książek</li>
   <li>Implementacja wyświetlania, dodawania, edycji i usuwania autorów</li>
-  <li>Modyfikacja poprzednich 2 punktów i dodanie relacji między książkami i autorami</li>
+  <li>Implementacja relacji między książkami i autorami</li>
 </ul>
