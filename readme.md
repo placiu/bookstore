@@ -1,11 +1,17 @@
-<img alt="Logo" src="http://coderslab.pl/svg/logo-coderslab.svg" width="400">
+<h2>Bookstore</h2>
 
-# PHP - Warsztat 3
+Celem warsztatów było napisanie pełnej i funkcjonalnej aplikacji do wypożyczania książek metodą REST.
 
-branch `master` - zawiera funkcjonalność książki
+Projekt składa się z dwóch części:
 
-branch `api_v2` - zawiera funkcjonalność książki i autora
+Serwer – napisany w PHP, implementujący funkcjonalność REST,
+Klient – napisany w HTML-u i JavaScript, komunikujący się z serwerem za pomocą AJAX.
+Obie te części działają w pełni niezależnie od siebie.
 
-branch `api_v3` - zawiera funkcjonalność książki i autora w relacji ze sobą
+Aplikacja implementuje następujące funkcjonalności:
 
-<img alt="Logo" src="http://coderslab.pl/wp-content/themes/coderslab/svg/logo-coderslab.svg" width="400">
+<ul>
+  <li>Implementacja wyświetlania, dodawania, edycji i usuwania książek</li>
+  <li>Implementacja wyświetlania, dodawania, edycji i usuwania autorów</li>
+  <li>Modyfikacja poprzednich 2 punktów i dodanie relacji między książkami i autorami</li>
+</ul>
