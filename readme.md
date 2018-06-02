@@ -1,17 +1,18 @@
 <h2>Bookstore</h2>
 
-Celem warsztatów było napisanie pełnej i funkcjonalnej aplikacji do wypożyczania książek metodą REST.
+Exercise for creating REST API for bookstore website.
 
-Projekt składa się z dwóch części:
+The project consists of two parts:
 
-Serwer – napisany w PHP, implementujący funkcjonalność REST,
-Klient – napisany w HTML-u i JavaScript, komunikujący się z serwerem za pomocą AJAX.
-Obie te części działają w pełni niezależnie od siebie.
+1. Server (PHP) – implements REST functionality
+2. Client – (HTML, JS) - communicate with the server using AJAX.
 
-Aplikacja implementuje następujące funkcjonalności:
+Both parts works fully independently of each other.
+
+The application implements the following functionalities:
 
 <ul>
-  <li>Implementacja wyświetlania, dodawania, edycji i usuwania książek</li>
-  <li>Implementacja wyświetlania, dodawania, edycji i usuwania autorów</li>
-  <li>Implementacja relacji między książkami i autorami</li>
+  <li>Displaying, adding, editing, deleting books</li>
+  <li>Displaying, adding, editing, deleting authors</li>
+  <li>Implementation of relations between books and authors</li>
 </ul>
