@@ -1,5 +1,6 @@
 <h2>Bookstore</h2>
 
+Back-end developer: PHP course workshop.
 Exercise for creating REST API for bookstore website.
 
 The project consists of two parts:
